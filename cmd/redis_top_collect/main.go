@@ -12,9 +12,9 @@ import (
 	"github.com/tguangch/gtools/common"
 )
 
-const useHelp = "Run 'stats -help' for more information.\n"
+const useHelp = "Run 'collect -help' for more information.\n"
 
-const helpMessage = `Go source code stats.`
+const helpMessage = `Go source code collect.`
 
 var (
 	dbHost = flag.String("h", "localhost", "influxdb host")
