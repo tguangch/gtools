@@ -9,5 +9,5 @@ then
   exit 1
 fi
 
-sed -i '/\/opt\/stats\/bin\/task.sh/d' /var/spool/cron/root
+sed -i '/redis_top_task.sh/d' /var/spool/cron/root
 service crond restart

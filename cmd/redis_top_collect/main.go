@@ -1,53 +1,63 @@
 package main
 
 import (
-	"strconv"
-	"fmt"
 	"os"
-	"log"
-	"time"
 	"flag"
+	"time"
+	"fmt"
+	"strconv"
+	"log"
 	"github.com/tguangch/gtools/machine"
 	"github.com/tguangch/gtools/influxdb"
-	"github.com/tguangch/gtools/common"
+	"github.com/tguangch/gtools/common"	
 )
 
-const useHelp = "Run 'collect -help' for more information.\n"
+const helpMessage = `Go source code redis_top_collect.
+Usage: redis_top_collect <option>
 
-const helpMessage = `Go source code collect.`
+The option argument perform:
+	-h	  		influxdb host 
+	-p	  		influxdb port
+	-d			influxdb dbName
+	-n			execute times per second
+
+Example: 
+  $ redis_top_collect -h localhost -p 8086 -d mydb -n 10
+`
 
 var (
 	dbHost = flag.String("h", "localhost", "influxdb host")
 	dbPort = flag.Int("p", 8086, "influxdb port")
-	dbName = flag.String("db", "mydb", "influxdb dbName")
-	configFile = flag.String("c", "configFile", "conf file")
-	period = flag.Int("n", 10, "period(unit:s)")
+	dbName = flag.String("d", "mydb", "influxdb dbName")
 )
 
-func main() {
+var (
+	times = flag.Int("n", 12, "execute times per second")
+)
+
+func main(){
 	
-	flag.Usage = func() { fmt.Fprint(os.Stderr, useHelp) }
-	flag.CommandLine.Init(os.Args[0], flag.ContinueOnError) // hack
-	if err := flag.CommandLine.Parse(os.Args[1:]); err != nil {
-		// (err has already been printed)
+	flag.CommandLine.Init("collect", flag.ContinueOnError)
+	flag.CommandLine.Usage = func(){  }
+	err := flag.CommandLine.Parse(os.Args[1:])
+	
+	if err != nil {
 		if err == flag.ErrHelp {
-			printHelp()
-		}
-		os.Exit(2)
+			PrintHelp()
+		} 
+		os.Exit(1)	
 	}
 	
-	p := *period
-	
-	times := 60 / p
-	
-	for i := 0; i<times; i++ {
+	t := *times
+	period := 60 / t
+	for i := 0; i<t; i++ {
 		topJobStart()
 		log.Println("task finished, t =", i)
-		if i == times-1 {
+		if i == t-1 {
 			break;
 		}
-		time.Sleep(time.Duration(p) * time.Second)
-	}
+		time.Sleep(time.Duration(period) * time.Second)
+	}	
 }
 
 const NAME = "top"
@@ -87,8 +97,10 @@ func topJobStart() {
 	influxdb.BatchSave(config, datas)
 }
 
-func printHelp() {
-	fmt.Fprintln(os.Stderr, helpMessage)
-	fmt.Fprintln(os.Stderr, "Flags:")
-	flag.PrintDefaults()
+func PrintUsage(){
+	fmt.Println("try 'redis_top_collect -help' for more info")
+}
+
+func PrintHelp() {
+	fmt.Println(helpMessage)
 }
