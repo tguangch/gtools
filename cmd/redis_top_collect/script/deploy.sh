@@ -10,7 +10,7 @@ function clean()
 function install()
 {
 	scp ./stats.zip tangguangchao@$1:/home/tangguangchao  >>/dev/null 2>>./error.log
-	ssh $1 sudo unzip stats.zip -d /opt >>/dev/null 2>>./error.log
+	ssh $1 sudo unzip -o stats.zip -d /opt >>/dev/null 2>>./error.log
 }
 
 function start()

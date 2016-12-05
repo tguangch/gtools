@@ -10,4 +10,4 @@ then
 fi
 
 sed -i '/redis_top_task.sh/d' /var/spool/cron/root
-service crond restart
+#service crond restart
