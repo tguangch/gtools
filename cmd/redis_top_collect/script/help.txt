@@ -1,1 +1,3 @@
 sed -i 's/\r//g' *
+
+for i in `seq 10400 10900`;do dig +short w$i.wdds.redis.com;dig +short r$i.wdds.redis.com;done | sort | uniq
