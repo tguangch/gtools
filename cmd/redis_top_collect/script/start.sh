@@ -8,7 +8,8 @@ then
   exit 1
 fi
 
-DIR_HOME=`pwd`
+##DIR_HOME=`pwd`
+DIR_HOME=/opt/stats/script
 
 BASEDIR=$DIR_HOME/..
 
