@@ -23,6 +23,8 @@ The option argument perform:
 
 Example: 
   $ redis_top_collect -h localhost -p 8086 -d mydb -n 10
+  
+Source code @https://github.com/tguangch/gtools
 `
 
 var (
