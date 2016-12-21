@@ -1,0 +1,3 @@
+## port
+## host(or ip):port
+## host(or ip):port:auth

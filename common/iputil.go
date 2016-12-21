@@ -20,3 +20,14 @@ func Localipv4() (string, error) {
 	
 	return "", errors.New("invalid ip(ipv4) address")
 }
+
+func Remoteipv4(host string) (string, error) {
+	ips, _ := net.LookupIP(host)
+	for _, ip := range ips {
+		if !ip.IsLoopback() && len(ip.To4())==4 {
+			return ip.String(), nil
+		}
+	}
+	
+	return "", errors.New("invalid ip(ipv4) address")
+}
