@@ -22,7 +22,7 @@ func testPassward(){
 }
 
 func testNoPassward(){
-	info, err := redis.Info("10.213.12.74", "12811", "")
+	info, err := redis.Info("10.213.33.157", "10829", "")
 	if err != nil {
 		fmt.Println(err)
 	}
