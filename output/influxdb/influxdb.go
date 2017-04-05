@@ -3,17 +3,18 @@ package influxdb
 import (
 	"bytes"
 	"strconv"
-    "time"
-    "log"
+    	"time"
+    	"log"
 	"github.com/influxdb/influxdb/client/v2"
+	//"github.com/astaxie/beego/config"
 )
 
 type Config struct {
-	Host	string
-	Port	int
-	User	string
-	PW		string
-	Database	string
+	Host	string			`json:"host"`
+	Port	int			`json:"port"`
+	User	string			`json:"user"`
+	PW		string		`json:"pw"`
+	Database	string		`json:"database"`
 }
 
 /*
@@ -35,19 +36,33 @@ type Data struct {
 	Fields	map[string]interface{}
 }
 
-func Save(config Config, data Data) error {
-    // Make client
-    c, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: config.getAddr(),
-    })
+type InfluxClient struct {
+	config 		Config
+	httpClient 	client.Client
+}
 
-    if err != nil {
-        log.Fatalln("Error: ", err)
-    }
+func NewClient(config Config) *InfluxClient{
+	// Make client
+	c, err := client.NewHTTPClient(client.HTTPConfig{
+		Addr: config.getAddr(),
+	})
+
+	if err != nil {
+		log.Fatalln("Error: ", err)
+	}
+
+	return &InfluxClient{
+		config : config,
+		httpClient : c,
+	}
+}
+
+func (this *InfluxClient) Save(data Data) error {
+    c := this.httpClient
 
     // Create a new point batch
     bp, err := client.NewBatchPoints(client.BatchPointsConfig{
-        Database:  config.Database,
+        Database:  this.config.Database,
         Precision: "s",
     })
 
@@ -67,19 +82,11 @@ func Save(config Config, data Data) error {
     return c.Write(bp)
 }
 
-func BatchSave(config Config, datas []Data) error {
-    // Make client
-    c, err := client.NewHTTPClient(client.HTTPConfig{
-        Addr: config.getAddr(),
-    })
-
-    if err != nil {
-        log.Fatalln("Error: ", err)
-    }
-
+func (this *InfluxClient) BatchSave(datas []Data) error {
+	c := this.httpClient
     // Create a new point batch
     bp, err := client.NewBatchPoints(client.BatchPointsConfig{
-        Database:  config.Database,
+        Database:  this.config.Database,
         Precision: "s",
     })
 

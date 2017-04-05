@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "github.com/tguangch/gtools/influxdb"
+    "github.com/tguangch/gtools/output/influxdb"
 )
 
 func main() {

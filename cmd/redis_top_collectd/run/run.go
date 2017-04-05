@@ -11,7 +11,7 @@ var ch chan string = make(chan string)
 func Start(){
 	fmt.Println("start ...")
 	
-	os.Args
+	//os.Args
 	
 	go echo()
 	

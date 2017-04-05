@@ -1,17 +1,17 @@
 package influxdb
 
 import (
-    "testing"
-    "fmt"
+	"testing"
+	"fmt"
 )
 
 func TestXYZ(t *testing.T) {
-	config := influxdb.Config {
+	config := Config {
 		Host : "10.213.12.74",
 		Port : 8086,
 		Database : "mydb",
 	}
-	data := influxdb.Data {
+	data := Data {
 		Name : "test",
 		Fields : map[string] interface{} {
 			"ops" : 6000,
@@ -29,7 +29,8 @@ func TestXYZ(t *testing.T) {
 	
 	fmt.Println("config", config)
 	fmt.Println("data", data)
-	err := influxdb.Save(config, data)
+
+	err := NewClient(config).Save(data)
 	if err != nil {
 		fmt.Println("error,", err)
 	}

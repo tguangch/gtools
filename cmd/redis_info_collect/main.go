@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"strconv"
 	"log"
-	"github.com/tguangch/gtools/influxdb"
+	"github.com/tguangch/gtools/output/influxdb"
 	"github.com/tguangch/gtools/common"	
 	"github.com/tguangch/gtools/redis"
 )
