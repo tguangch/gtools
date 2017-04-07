@@ -1,8 +1,8 @@
 metric:
   - module: elasticsearch
     hosts:
-      - 10.213.54.76:10200
-      - 10.213.54.98:10200
+      - 10.213.73.12:10200
+      - 10.213.73.13:10200
     metricset:
     enabled: true
     ## collect period, unit: second
@@ -36,6 +36,5 @@ output:
 
 #============================ much more conf files ======================
 include:
-  - ./conf/es-risk.yml
-  - ./conf/open-api.yml
-  - ./conf/vg003.yml
+#  - ./conf/system.yml
+#  - ./conf/jstats.yml

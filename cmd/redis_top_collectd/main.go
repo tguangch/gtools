@@ -21,7 +21,7 @@ The option argument perform:
 	-o	  		location of output
 
 Example: 
-  $ redis_top_collectd -c /etc/stats/collector.yml -o /var/run/collector.log
+  $ redis_top_collectd -c /etc/stats/collect.yml -o /var/run/collect.log
 `
 
 var (
