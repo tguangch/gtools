@@ -1,0 +1,29 @@
+metric:
+  - module: redis
+    hosts:
+      - 172.16.100.197:7380
+      - 172.16.100.197:7381
+      - 172.16.100.197:7382
+    metricset:
+    enabled: true
+    ## collect period, unit: second
+    period: 5
+    processes:
+
+#  - module: redis
+#    hosts:
+#      - 10.213.73.12:12811
+#    metricset:
+#    enabled: true
+#    ## collect period, unit: second
+#    period: 2
+#    processes:
+
+output:
+  ## influxdb, elasticsearch, opentsdb, kafka
+  - module: influxdb
+    host: 172.16.100.203
+    port: 8086
+    database: redis
+    user:
+    password:
