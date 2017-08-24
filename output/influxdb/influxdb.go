@@ -5,7 +5,7 @@ import (
 	"strconv"
     	"time"
     	"log"
-	"github.com/influxdb/influxdb/client/v2"
+	"github.com/influxdata/influxdb/client/v2"
 	//"github.com/astaxie/beego/config"
 )
 

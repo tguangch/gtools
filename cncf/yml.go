@@ -3,7 +3,7 @@ package cncf
 import (
 	"os"
 	"io/ioutil"
-	"github.com/yaml"
+	"github.com/go-yaml/yaml"
 	"errors"
 	"fmt"
 )

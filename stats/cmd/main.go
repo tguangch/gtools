@@ -8,7 +8,7 @@ import (
 	"time"
 	"flag"
 	"github.com/tguangch/gtools/machine"
-	"github.com/tguangch/gtools/influxdb"
+	"github.com/tguangch/gtools/output/influxdb"
 	"github.com/tguangch/gtools/common"
 )
 
@@ -54,11 +54,11 @@ const NAME = "top"
 
 func topJobStart() {
 	
-	var config = influxdb.Config{
+/*	var config = influxdb.Config{
 		Host : *dbHost,
 		Port : *dbPort,
 		Database : *dbName,
-	}
+	}*/
 	
 	localIp, err := common.Localipv4()
 	if err != nil {
@@ -84,7 +84,8 @@ func topJobStart() {
 				)
 	}
 	
-	influxdb.BatchSave(config, datas)
+	//influxdb.BatchSave(config, datas)
+	//influxdb.BatchSave(datas)
 }
 
 func printHelp() {
