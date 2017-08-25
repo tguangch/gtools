@@ -1,0 +1,36 @@
+{
+	"ImportPath": "github.com/tguangch/gtools/cmd/collectd",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-yaml/yaml",
+			"Rev": "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/client/v2",
+			"Comment": "v0.12.0",
+			"Rev": "4f29ba4013f6f46efeaa948bb7e0fd561cac5e95"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/models",
+			"Comment": "v0.12.0",
+			"Rev": "4f29ba4013f6f46efeaa948bb7e0fd561cac5e95"
+		},
+		{
+			"ImportPath": "github.com/influxdata/influxdb/pkg/escape",
+			"Comment": "v0.12.0",
+			"Rev": "4f29ba4013f6f46efeaa948bb7e0fd561cac5e95"
+		},
+				{
+			"ImportPath": "github.com/garyburd/redigo/internal",
+			"Comment": "v1.1.0",
+			"Rev": "433969511232c397de61b1442f9fd49ec06ae9ba"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/redis",
+			"Comment": "v1.1.0",
+			"Rev": "433969511232c397de61b1442f9fd49ec06ae9ba"
+		}
+	]
+}
