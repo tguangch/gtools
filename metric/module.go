@@ -5,15 +5,19 @@ import (
 	"github.com/tguangch/gtools/common"
 	"errors"
 	"github.com/tguangch/gtools/metric/elasticsearch"
+	"github.com/tguangch/gtools/metric/redisModule"
 	//"fmt"
 )
-
-const Module_ElasticSearch = "elasticsearch"
 
 var _mudules = make(map[string]common.MetricModule)
 
 func init(){
-	_mudules[Module_ElasticSearch] = elasticsearch.NewModule()
+	_mudules["elasticsearch"] = elasticsearch.NewModule()
+	_mudules["redis"] = redisModule.NewModule()
+}
+
+func Registry(moduleNmae string, module common.MetricModule){
+	_mudules[moduleNmae] = module
 }
 
 func GetModule(module string) (common.MetricModule, error){

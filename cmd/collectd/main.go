@@ -11,7 +11,8 @@ import (
 )
 
 var (
-	configFile = flag.String("c", "/etc/stats/collect.yml", "location of config file")
+	//configFile = flag.String("c", "/etc/stats/collect.yml", "location of config file")
+	configFile = flag.String("c", "D:/tguangch/go-gtools/src/github.com/tguangch/gtools/cmd/collectd/redis.yml", "location of config file")
 )
 
 func main(){
